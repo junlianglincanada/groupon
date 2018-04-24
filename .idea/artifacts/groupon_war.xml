@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="groupon:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="groupon.war">
+      <element id="artifact" artifact-name="groupon:war exploded" />
+    </root>
+  </artifact>
+</component>
