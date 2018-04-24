@@ -1,6 +1,7 @@
 package com.junlianglin.framework.controller;
 
 import com.junlianglin.framework.domain.Merchant;
+import com.junlianglin.framework.model.MerchantModel;
 import com.junlianglin.framework.service.MerchantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,7 @@ public class MerchantController {
     MerchantService merchantService;
 
     @RequestMapping(value = "/getMerchants", method = RequestMethod.GET, headers = "Accept=application/json")
-    public String  getMerchants(@ModelAttribute("merchant")Merchant merchant, Model model) {
+    public String  getMerchants(@ModelAttribute("merchant")MerchantModel merchant, Model model) {
         List<Merchant> list = merchantService.getAllMerchants();
 
         model.addAttribute("merchant", new Merchant());
@@ -29,9 +30,10 @@ public class MerchantController {
     }
 
     @RequestMapping(value = "/addMerchant", method = RequestMethod.POST, headers = "Accept=application/json")
-    public String addMerchant(@ModelAttribute("merchant") Merchant merchant) {
+    public String addMerchant(@ModelAttribute("merchant") MerchantModel merchant) {
         if(merchant.getId()==0)
         {
+
             merchantService.addMerchant(merchant);
         }
         else

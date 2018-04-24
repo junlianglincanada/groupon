@@ -17,19 +17,14 @@ import java.util.Date;
 @Table(name = "merchant")
 public class Merchant implements Serializable {
 
-    public Merchant(int id,String abbName,String fullName,String address,String createDate,int employees){
-
-
-
+    public Merchant(int id,String abbName,String fullName,String address,Date createDate,int employees){
         super();
-
         this.id = id;
         this.abbName = abbName;
         this.fullName = fullName;
         this.address = address;
         this.createDate = createDate;
         this.employees = employees;
-
     }
     public Merchant(){
         super();
@@ -57,7 +52,7 @@ public class Merchant implements Serializable {
     @NotNull
     @Past
     @Column(name = "createdate")
-    private String createDate;
+    private Date createDate;
 
     @NotNull
     @Digits(integer = 6, fraction = 0)
@@ -96,11 +91,11 @@ public class Merchant implements Serializable {
         this.address = address;
     }
 
-    public String getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(String createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
