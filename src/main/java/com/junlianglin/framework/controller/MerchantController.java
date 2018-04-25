@@ -31,14 +31,15 @@ public class MerchantController {
 
     @RequestMapping(value = "/addMerchant", method = RequestMethod.POST, headers = "Accept=application/json")
     public String addMerchant(@ModelAttribute("merchant") MerchantModel merchant) {
+
+        Merchant entity = MerchantModel.ModelToDomain(merchant);
         if(merchant.getId()==0)
         {
-
-            merchantService.addMerchant(merchant);
+            merchantService.addMerchant(entity);
         }
         else
         {
-            merchantService.updateMerchant(merchant);
+            merchantService.updateMerchant(entity);
         }
 
         return "redirect:/merchant/getMerchants";
