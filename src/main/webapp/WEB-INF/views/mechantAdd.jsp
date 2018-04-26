@@ -6,7 +6,7 @@
 <head>
 </head>
 <body>
-<form:form method="post" modelAttribute="merchant" action="${pageContext.request.contextPath}/merchant/addMerchant">
+<form:form method="post" modelAttribute="merchant" action="${pageContext.request.contextPath}/merchant/addMerchant" >
     <table>
         <tr>
             <th colspan="2">Add merchant</th>
@@ -40,26 +40,7 @@
     </table>
 </form:form>
 </br>
-<h3>Country List</h3>
 
-    <table class="tg">
-        <tr>
-            <th width="80">Id</th>
-            <th width="120">Country Name</th>
-            <th width="120">Population</th>
-            <th width="60">Edit</th>
-            <th width="60">Delete</th>
-        </tr>
-        <c:forEach items="${listOfMerchants}" var="merchant">
-            <tr>
-                <td>${merchant.id}</td>
-                <td>${merchant.abbName}</td>
-                <td>${merchant.fullName}</td>
-                <td><a href="<c:url value='${pageContext.request.contextPath}/merchant/updateCountry/${merchant.id}' />" >Edit</a></td>
-                <td><a href="<c:url value='${pageContext.request.contextPath}/merchant/deleteCountry/${merchant.id}' />" >Delete</a></td>
-            </tr>
-        </c:forEach>
-    </table>
 
 </body>
 </html>

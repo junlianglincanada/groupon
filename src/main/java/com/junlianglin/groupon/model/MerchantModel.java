@@ -1,23 +1,17 @@
-package com.junlianglin.framework.domain;
+package com.junlianglin.groupon.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
-import javax.validation.constraints.Size;
-import java.io.Serializable;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
-@Entity
-@Table(name = "merchant")
-public class Merchant implements Serializable {
 
-    public Merchant(int id,String abbName,String fullName,String address,Date createDate,int employees){
+import com.junlianglin.framework.model.AbstractModel;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+
+@XmlRootElement(name = "person")
+public class MerchantModel extends AbstractModel {
+
+    public MerchantModel(int id, String abbName, String fullName, String address, String createDate, int employees){
         super();
         this.id = id;
         this.abbName = abbName;
@@ -26,43 +20,33 @@ public class Merchant implements Serializable {
         this.createDate = createDate;
         this.employees = employees;
     }
-    public Merchant(){
+    public MerchantModel(){
         super();
     }
 
-    @Id
-    @Column(name = "id")
+
     private int id;
 
-    @NotNull
-    @Size(min = 2, max = 16)
-    @Column(name = "abbname")
+
     private String abbName;
 
-    @NotNull
-    @Size(min = 5, max = 16)
-    @Column(name = "fullname")
+
     private String fullName;
 
-    @NotNull
-    @Size(min = 2, max = 30)
-    @Column(name = "address")
+
     private String address;
 
-    @NotNull
-    @Past
-    @Column(name = "createdate")
-    private Date createDate;
 
-    @NotNull
-    @Digits(integer = 6, fraction = 0)
-    @Column(name = "employees")
+    private String createDate;
+
+
     private int employees;
 
     public int getId() {
         return id;
     }
 
+    @XmlElement
     public void setId(int id) {
         this.id = id;
     }
@@ -71,6 +55,7 @@ public class Merchant implements Serializable {
         return abbName;
     }
 
+    @XmlElement
     public void setAbbName(String abbName) {
         this.abbName = abbName;
     }
@@ -79,6 +64,7 @@ public class Merchant implements Serializable {
         return fullName;
     }
 
+    @XmlElement
     public void setFullName(String fullName) {
         this.fullName = fullName;
     }
@@ -87,15 +73,17 @@ public class Merchant implements Serializable {
         return address;
     }
 
+    @XmlElement
     public void setAddress(String address) {
         this.address = address;
     }
 
-    public Date getCreateDate() {
+    public String getCreateDate() {
         return createDate;
     }
 
-    public void setCreateDate(Date createDate) {
+    @XmlElement
+    public void setCreateDate(String createDate) {
         this.createDate = createDate;
     }
 
@@ -103,7 +91,12 @@ public class Merchant implements Serializable {
         return employees;
     }
 
+    @XmlElement
     public void setEmployees(int employees) {
         this.employees = employees;
     }
+
+
+
+
 }
